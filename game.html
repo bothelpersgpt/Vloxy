@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    #usernameDisplay {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #gameMessage {
+      margin-top: 20px;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Welcome to the Game Dashboard</h2>
+
+  <div id="usernameDisplay"></div>
+
+  <div id="gameMessage">
+    <p>No games are currently available. We are developing exciting new games for you!</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Check if user is logged in
+      var storedCredentials = localStorage.getItem("gameUserCredentials");
+
+      if (storedCredentials) {
+        var usernameDisplay = document.getElementById("usernameDisplay");
+        usernameDisplay.textContent = "Hello, " + JSON.parse(storedCredentials).username + "!";
+      } else {
+        // Redirect to game signup if not logged in
+        window.location.href = "/signup";
+      }
+    });
+  </script>
+
+</body>
+</html>
