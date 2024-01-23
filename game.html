@@ -3,29 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Game Dashboard</title>
+  <title>Game</title>
   <style>
-    /* Your CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    #usernameDisplay {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #gameMessage {
+      margin-top: 20px;
+      text-align: center;
+      color: #555;
+    }
+
+    #signupLink {
+      margin-top: 20px;
+      text-decoration: none;
+      color: #4caf50;
+    }
   </style>
 </head>
 <body>
 
+  <h2>Welcome to the Dashboard</h2>
+
+  <div id="usernameDisplay"></div>
+
+  <div id="gameMessage">
+    <p>No games have been created yet. We are still building!</p>
+  </div>
+
+  <a id="signupLink" href="/signup">Signup or Login</a>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Check if user is logged in
-      var storedCredentials = localStorage.getItem("gameUserCredentials");
+      // Check if user credentials are stored
+      var storedCredentials = localStorage.getItem("userCredentials");
 
       if (storedCredentials) {
-        var usernameDisplay = document.createElement("div");
-        usernameDisplay.textContent = "Logged in as " + JSON.parse(storedCredentials).username;
-        document.body.appendChild(usernameDisplay);
-
-        var noGamesMessage = document.createElement("div");
-        noGamesMessage.textContent = "No games have been created yet.";
-        document.body.appendChild(noGamesMessage);
+        // User is logged in, display username
+        var usernameDisplay = document.getElementById("usernameDisplay");
+        usernameDisplay.textContent = "Hello, " + JSON.parse(storedCredentials).username + "!";
       } else {
-        // Redirect to login if not logged in
-        window.location.href = "/login";
+        // User is not logged in, provide link to signup/login
+        var signupLink = document.getElementById("signupLink");
+        signupLink.textContent = "Signup or Login";
       }
     });
   </script>
