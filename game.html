@@ -16,15 +16,9 @@
       height: 100vh;
     }
 
-    h2 {
-      text-align: center;
-      color: #333;
-      margin-top: 20px;
-    }
-
     #usernameDisplay {
       font-size: 18px;
-      margin-top: 10px;
+      margin-top: 20px;
     }
 
     #gameMessage {
@@ -32,25 +26,15 @@
       text-align: center;
       color: #555;
     }
-
-    #signupLink {
-      margin-top: 20px;
-      text-decoration: none;
-      color: #4caf50;
-    }
   </style>
 </head>
 <body>
-
-  <h2>Welcome to the Dashboard</h2>
 
   <div id="usernameDisplay"></div>
 
   <div id="gameMessage">
     <p>No games have been created yet. We are still building!</p>
   </div>
-
-  <a id="signupLink" href="/signup">Signup or Login</a>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -62,9 +46,8 @@
         var usernameDisplay = document.getElementById("usernameDisplay");
         usernameDisplay.textContent = "Hello, " + JSON.parse(storedCredentials).username + "!";
       } else {
-        // User is not logged in, provide link to signup/login
-        var signupLink = document.getElementById("signupLink");
-        signupLink.textContent = "Signup or Login";
+        // User is not logged in, redirect to signup
+        window.location.href = "/signup";
       }
     });
   </script>
