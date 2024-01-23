@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    #usernameDisplay {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #signupLink {
+      margin-top: 20px;
+      text-decoration: none;
+      color: #4caf50;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Welcome to the Dashboard</h2>
+
+  <div id="usernameDisplay"></div>
+
+  <a id="signupLink" href="/signup">Signup or Login</a>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Check if user credentials are stored
+      var storedCredentials = localStorage.getItem("userCredentials");
+
+      if (storedCredentials) {
+        // User is logged in, display username
+        var usernameDisplay = document.getElementById("usernameDisplay");
+        usernameDisplay.textContent = "Hello, " + JSON.parse(storedCredentials).username + "!";
+      } else {
+        // User is not logged in, provide link to signup/login
+        var signupLink = document.getElementById("signupLink");
+        signupLink.textContent = "Signup or Login";
+      }
+    });
+  </script>
+    <script src="Node.js"></script>
+
+</body>
+</html>
