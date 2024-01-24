@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Modern Website</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #usernameDisplay {
+      font-size: 2rem;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    #customMessage {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="usernameDisplay"></div>
+
+  <div id="customMessage">
+    <p>This website is still under construction. Hello, create and explore, but please note that there's a special message for you!</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Check if user credentials are stored
+      var storedCredentials = localStorage.getItem("userCredentials");
+
+      if (storedCredentials) {
+        // User is logged in, display username
+        var usernameDisplay = document.getElementById("usernameDisplay");
+        usernameDisplay.textContent = "Hello, " + JSON.parse(storedCredentials).username + "!";
+      } else {
+        // User is not logged in, redirect to signup
+        window.location.href = "/signup";
+      }
+    });
+  </script>
+
+</body>
+</html>
