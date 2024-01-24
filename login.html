@@ -76,21 +76,27 @@
   <div id="loginError"></div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", async function(event) {
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
       // Get values from the form
       var enteredUsername = document.getElementById("username").value;
       var enteredPassword = document.getElementById("password").value;
 
-      // Directly handle the logic without asynchronous fetch
-      var signupResponse = await fetch("/signup"); // Replace with actual signup endpoint
-      var signupData = await signupResponse.json();
+      // Retrieve stored user data from localStorage
+      var storedUserData = localStorage.getItem("userData");
 
-      if (signupData.usernames.includes(enteredUsername)) {
-        document.getElementById("loginError").textContent = "Invalid password. Please try again.";
+      if (storedUserData) {
+        var userData = JSON.parse(storedUserData);
+
+        // Check if entered credentials match stored data
+        if (enteredUsername === userData.username && enteredPassword === userData.password) {
+          alert("Login successful!"); // Replace with your desired action
+        } else {
+          document.getElementById("loginError").textContent = "Invalid username or password. Please try again.";
+        }
       } else {
-        document.getElementById("loginError").textContent = "Invalid username. Please try again.";
+        document.getElementById("loginError").textContent = "No account found. Please sign up.";
       }
     });
   </script>
