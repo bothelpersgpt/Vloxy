@@ -51,6 +51,12 @@
     input[type="submit"]:hover {
       background-color: #45a049;
     }
+
+    #loginError {
+      margin-top: 10px;
+      color: #f00;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -67,35 +73,26 @@
     <input type="submit" value="Login">
   </form>
 
+  <div id="loginError"></div>
+
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
+    document.getElementById("loginForm").addEventListener("submit", async function(event) {
       event.preventDefault();
 
       // Get values from the form
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
+      var enteredUsername = document.getElementById("username").value;
+      var enteredPassword = document.getElementById("password").value;
 
-      // Perform AJAX request or fetch to your server for authentication
-      // Replace the following lines with your actual server-side logic
-      // Example assumes a simple success scenario, adjust as needed
+      // Directly handle the logic without asynchronous fetch
+      var signupResponse = await fetch("/your-signup-endpoint"); // Replace with actual signup endpoint
+      var signupData = await signupResponse.json();
 
-      // Simulating a server response
-      var fakeServerResponse = {
-        success: true,
-        redirectTo: "/dashboard",
-        errorMessage: "Invalid username or password",
-      };
-
-      if (fakeServerResponse.success) {
-        // Redirect to dashboard if login is successful
-        window.location.href = fakeServerResponse.redirectTo;
+      if (signupData.usernames.includes(enteredUsername)) {
+        document.getElementById("loginError").textContent = "Invalid password. Please try again.";
       } else {
-        // Show error message if login fails
-        alert(fakeServerResponse.errorMessage);
+        document.getElementById("loginError").textContent = "Invalid username. Please try again.";
       }
     });
   </script>
-    <script src="Node.js"></script>
-
 </body>
 </html>
