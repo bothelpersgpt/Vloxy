@@ -52,7 +52,6 @@
       background-color: #45a049;
     }
 
-    /* Added styles for the link */
     p {
       text-align: center;
       margin-top: 10px;
@@ -67,6 +66,12 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    /* Added styles for the new message */
+    .login-issue {
+      color: #ff0000;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -85,7 +90,7 @@
   </form>
 
   <p>
-    Already have an account? <a href="/dashboard">Click here</a> to go to your dashboard.
+    Already have an account? <a href="/dashboard">Click here</a> to go to your dashboard. If there's an issue with your account login, go to <a class="login-issue" href="/login">/login</a>.
   </p>
 
   <script>
