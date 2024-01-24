@@ -84,7 +84,7 @@
       var enteredPassword = document.getElementById("password").value;
 
       // Directly handle the logic without asynchronous fetch
-      var signupResponse = await fetch("/your-signup-endpoint"); // Replace with actual signup endpoint
+      var signupResponse = await fetch("/signup"); // Replace with actual signup endpoint
       var signupData = await signupResponse.json();
 
       if (signupData.usernames.includes(enteredUsername)) {
