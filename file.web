@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signup Page</title>
+  <link rel="icon" type="image/jpg" href="v.ico" sizes="48x48" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -51,6 +52,28 @@
     input[type="submit"]:hover {
       background-color: #45a049;
     }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Added styles for the new message */
+    .login-issue {
+      color: #ff0000;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -66,6 +89,10 @@
 
     <input type="submit" value="Sign Up">
   </form>
+
+  <p>
+    Already have an account? <a href="/dashboard">Click here</a> to go to your dashboard. If there's an issue with your account login, go to <a class="login-issue" href="/login">/login</a>.
+  </p>
 
   <script>
     document.getElementById("signupForm").addEventListener("submit", function(event) {

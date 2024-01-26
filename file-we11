@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
+  <link rel="icon" type="image/jpg" href="v.ico" sizes="48x48" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -32,6 +33,15 @@
       text-decoration: none;
       color: #4caf50;
     }
+
+    #playGameButton {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -41,6 +51,8 @@
   <div id="usernameDisplay"></div>
 
   <a id="signupLink" href="/signup">Signup or Login</a>
+
+  <button id="playGameButton">Play Game</button>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -56,9 +68,17 @@
         var signupLink = document.getElementById("signupLink");
         signupLink.textContent = "Signup or Login";
       }
+
+      // Add event listener to the play game button
+      var playGameButton = document.getElementById("playGameButton");
+      playGameButton.addEventListener("click", function() {
+        // Redirect to the "/game" page when the button is clicked
+        window.location.href = "/game";
+      });
     });
   </script>
-    <script src="Node.js"></script>
+  <script src="Node.js"></script>
+  <script src="file.js"></script>
 
 </body>
 </html>
